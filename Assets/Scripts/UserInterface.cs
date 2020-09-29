@@ -100,11 +100,16 @@ namespace DesertSurvival
         public void ToggleActivity()
         {
             bool isActive = mainController.selection.SelectedObject.GetComponent<Building>().toggleActivity();
-            Text activityText = GameObject.Find("T.ToggleActivityButton").GetComponent<Text>();
+            Text activityText = GameObject.Find("T.ToggleActivity").GetComponent<Text>();
             if (isActive)
+            {
+                GameObject.Find("C.PowerProductionPerTime/Value").GetComponent<Text>().text = (mainController.selection.SelectedObject.GetComponent<Building>().powerProduction * 1000).ToString() + " kWh";
                 activityText.text = "Disable";
-            else
+            }
+            else {
+                GameObject.Find("C.PowerProductionPerTime/Value").GetComponent<Text>().text = "0 kWh";
                 activityText.text = "Enable";
+            }
         }
         #endregion
 

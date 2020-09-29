@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DesertSurvival;
 
 namespace DesertSurvival
@@ -56,6 +57,7 @@ namespace DesertSurvival
             // Assign selected building into variable.
             SelectedObject = hitInfo.transform.gameObject;
             SelectedBuilding = SelectedObject.GetComponent<Building>();
+            GameObject.Find("C.PowerProductionPerTime/Value").GetComponent<Text>().text = (SelectedObject.GetComponent<Building>().powerProduction * 1000).ToString() + " kWh";
             // Set checker to true.
             IsSelected = true;
         }
